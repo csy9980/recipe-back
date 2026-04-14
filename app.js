@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
+const app = express();
 
 app.use(cors({
   origin: [
@@ -11,17 +12,17 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const postRouter = require("./routes/posts");
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const models = require("./models");
-const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 const uploadDir = path.join(__dirname, "public", "uploads");
 app.use("/downloads", express.static(uploadDir));
-
 app.use("/posts", postRouter);
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
