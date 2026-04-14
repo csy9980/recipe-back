@@ -1,16 +1,15 @@
+const path = require("path");
+const express = require("express");
+const cors = require("cors");
+
 app.use(cors({
   origin: [
     "http://localhost:3000",
     "https://recipe-front-kappa.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
-
-app.options("*", cors());
-
-const path = require("path");
-const express = require("express");
-const cors = require("cors");
 
 const postRouter = require("./routes/posts");
 const userRouter = require("./routes/users");
