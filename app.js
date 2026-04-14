@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://recipe-front.vercel.app",
+    "https://recipe-front-kappa.vercel.app/",
     "https://recipe-front-5508irg1v-csy9980s-projects.vercel.app"
   ],
   credentials: true
