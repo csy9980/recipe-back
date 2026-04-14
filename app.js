@@ -1,3 +1,13 @@
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://recipe-front-kappa.vercel.app"
+  ],
+  credentials: true
+}));
+
+app.options("*", cors());
+
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
@@ -7,15 +17,6 @@ const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const models = require("./models");
 const app = express();
-
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://recipe-front-kappa.vercel.app/",
-    "https://recipe-front-5508irg1v-csy9980s-projects.vercel.app"
-  ],
-  credentials: true
-}))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
